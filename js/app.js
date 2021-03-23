@@ -8,7 +8,7 @@ for (let i = 1; i <= count; i++) {
     ul.insertAdjacentHTML("beforeEnd", htmlTextToAdd);
 }
 
-window.onscroll = function() {showButton()};
+window.onscroll = function() {showButtonAndActivateLink()};
 button.onclick = function() {scrollToSection(0)};
 
 function scrollToSection(id) {
@@ -28,10 +28,18 @@ function scrollToSection(id) {
     }
 }
 
-function showButton() {
+function showButtonAndActivateLink() {
     if (document.documentElement.scrollTop > 20) {
         button.style.display = "block";
     } else {
         button.style.display = "none";
+    }
+
+    for (let i = 1; i <= count; i++) {
+        if (document.getElementById("section" + i).offsetTop <= window.scrollY + 100 && document.getElementById("section" + i).offsetTop + document.getElementById("section" + i).offsetHeight > window.scrollY + 100) {
+            ul.children[i - 1].firstElementChild.classList.add("current");
+        } else {
+            ul.children[i - 1].firstElementChild.classList.remove("current");
+        }
     }
 }
