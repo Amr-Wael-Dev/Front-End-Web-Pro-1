@@ -92,6 +92,11 @@ section {
     transition: ease 0.3s all;
 }
 
+.menu__link.current {
+    color: #333;
+    background: rgb(230, 241, 247);
+}
+
 .page__header {
     background: #fff;
     position: fixed;
